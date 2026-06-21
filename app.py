@@ -72,6 +72,7 @@ if uploaded_file is not None:
     ]
 
     output_text = ""
+    psd_data = []
 
     # 고정 헌금 순서
     ORDER = [
@@ -149,6 +150,13 @@ if uploaded_file is not None:
 
         sorted_col = sorted(col_data)
 
+        psd_data.append(
+            (
+                title,
+                "\n".join(sorted_col)
+            )
+        )
+
         output_text += f"[{title}]\n"
 
         for i in range(0, len(sorted_col), 17):
@@ -158,7 +166,7 @@ if uploaded_file is not None:
             output_text += line + "\n"
 
         output_text += "\n"
-
+    print(psd_data)
     if user_name:
         st.success(
             f"{user_name}님 결과입니다"
